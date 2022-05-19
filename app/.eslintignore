@@ -1,0 +1,5 @@
+# Ignore root files
+/*
+
+# Includes files in pages and styles folders
+!src

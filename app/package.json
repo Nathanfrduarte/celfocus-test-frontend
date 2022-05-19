@@ -1,0 +1,110 @@
+{
+    "name": "celfocus-test-frontend",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "start": "react-scripts start",
+        "build": "react-scripts build",
+        "test": "react-scripts test",
+        "test:coverage": "react-scripts test --coverage",
+        "eject": "react-scripts eject",
+        "api": "cd ../api && npm run api",
+        "serve": "concurrently --kill-others-on-fail \"yarn api\" \"yarn start\"",
+        "dependencies": "concurrently --kill-others-on-fail \"yarn\" \"yarn\"",
+        "lint": "npx eslint src/** --quiet --fix",
+        "deploy": "yarn build && aws s3 sync build/ s3://celfocus-frontend-test --acl public-read"
+    },
+    "dependencies": {
+        "@reduxjs/toolkit": "^1.8.1",
+        "@testing-library/jest-dom": "^5.14.1",
+        "@testing-library/react": "^13.0.0",
+        "@testing-library/user-event": "^13.2.1",
+        "@types/jest": "^27.5.1",
+        "@types/node": "^16.7.13",
+        "@types/react": "^18.0.0",
+        "@types/react-dom": "^18.0.4",
+        "antd": "^4.20.5",
+        "axios": "^0.27.2",
+        "concurrently": "^7.2.0",
+        "react": "^18.1.0",
+        "react-dom": "^18.1.0",
+        "react-redux": "^8.0.1",
+        "react-router-dom": "6",
+        "react-scripts": "5.0.1",
+        "styled-components": "^5.3.5",
+        "typescript": "^4.6.4"
+    },
+    "devDependencies": {
+        "@types/react-router-dom": "^5.3.3",
+        "@types/styled-components": "^5.1.25",
+        "@typescript-eslint/eslint-plugin": "^5.25.0",
+        "@typescript-eslint/parser": "^5.25.0",
+        "eslint": "^7.32.0 || ^8.2.0",
+        "eslint-config-airbnb": "^19.0.4",
+        "eslint-config-prettier": "^8.5.0",
+        "eslint-import-resolver-typescript": "^2.7.1",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-jsx-a11y": "^6.5.1",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-react": "^7.28.0",
+        "eslint-plugin-react-hooks": "^4.3.0",
+        "jest": "^28.1.0",
+        "prettier": "^2.6.2",
+        "ts-jest": "^28.0.2",
+        "ts-node": "^10.7.0"
+    },
+    "resolutions": {
+        "styled-components": "^5"
+    },
+    "eslintConfig": {
+        "extends": [
+            "react-app",
+            "react-app/jest"
+        ]
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    },
+    "jest": {
+      "clearMocks": true,
+      "collectCoverageFrom": [
+        "src/**/*.{js,jsx,ts,tsx}",
+        "!src/**/*.d.ts",
+        "!src/index.tsx",
+        "!src/config/**/*.{js,jsx,ts,tsx}",
+        "!src/styles/**/*.{js,jsx,ts,tsx}",
+        "!src/types/**/*.{js,jsx,ts,tsx}"
+      ],
+      "transformIgnorePatterns": [
+        "/node_modules/(?!antd|@ant-design|rc-.+?|@babel/runtime).+(js|jsx)$"
+      ],
+      "coverageThreshold": {
+        "global": {
+          "branches": 90,
+          "lines": 90,
+          "functions": 90,
+          "statements": 90
+        },
+        "./**/": {
+          "branches": 90,
+          "lines": 90,
+          "functions": 90,
+          "statements": 90
+        }
+      }
+    },
+    "jestSonar": {
+      "reportPath": "coverage",
+      "reportFile": "jest-sonar-reporter.xml",
+      "indent": 2
+    }
+}
